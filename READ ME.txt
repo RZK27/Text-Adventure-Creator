@@ -1,0 +1,74 @@
+Hello there!
+You want to make a choose your own adventure story?
+Here are the rules!
+
+Your input text file, game.txt, must be mindful of newlines and order. Below is an example of how to set up the lines properly.
+
+       0
+   00     01
+000 001 010 011
+
+would be written in game.txt as 
+
+0
+00
+01
+000
+001
+010
+011
+
+You will notice that the choices are laid out are in order of depth first (the number of choices you'd need to make to reach it), then from
+left to right; a collapsed version of the original option tree.
+
+
+Every event is confined to one line of text in the text file. The between of two sentences is marked by a backslash instead of a space.
+At the end of the line, to ask for choices ask the user to input A or B for certain options.
+
+This is an example.\You see the backslashes?\They are needed.\A: You would like to go to the beach.\B: You would like to go shopping.
+
+
+If you do not want to ask for choices as you want to end the path early, just end with \^
+
+This is another example.\The end.\^
+
+
+WARNING: If you end a line in a path early, you MUST include the rest of what the path could have been in the document; it should NOT be empty. Below is a proper example.
+Advanced: They actually can be empty so long as the last line of the text file is not.
+
+How are you?\A: Good, B: Bad
+Great!\Why are you at the doctor's then.\^
+I'm not a registered practitioner but I'll try my best.\Is it your ankle?\A: Yes how did you know? B: No...
+ooga
+booga
+Because, I am you.\From the future.
+Lies.\I do not believe you.
+
+Notice that I did not place a \^ after those last two lines. This is because \^ is only necessary for early ends.
+
+Bonus: Put @ in a sentence to clear the screen after the sentence is read.
+
+
+Advanced: In order to send the end of a path to another path (without asking for a choice), use \#n, where n is the number of the line
+you are sending the user to. This is to be placed at the end of the line. Note that this follows the same rules as \^, meaning you
+MUST include the rest of what the path could have been in the document. Treat it as an early end or the code will not work. If you don't
+want the user to have to press enter to jump to the new route, just put #n. This is handy for when you have a line that is empty but for
+this command.
+
+How are you?\A: Good, B: Bad
+Great!\Why are you at the doctor's then.\^
+I'm not a registered practitioner but I'll try my best.\Is it your ankle?\A: Yes how did you know? B: No...
+ooga
+booga
+Because, I am you.\From the future.
+Lies.\I do not believe you\#3
+
+Here, if the user makes it to "I do not believe you", they will be then transported to "I'm not a registered practitioner..." and continue from there.
+
+Every game.txt file must have a number of lines one less than a power of 2. The last example had 7, which is one less than 8.
+As long as all the other steps are followed above, this will happen naturally. If not, something went wrong somewhere, and the code will not run.
+
+To make the game a little more personal, you can also edit title.txt to print a title screen when the program starts.
+Functions and other rules do not apply there, it will just be printed to the console as you write in the text file.	
+
+Good luck!
